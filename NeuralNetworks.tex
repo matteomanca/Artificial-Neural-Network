@@ -1,0 +1,286 @@
+\documentclass[twoside]{book}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{alltt}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{setspace}
+%\usepackage[latin1]{inputenc}
+\usepackage{moreverb}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{appendix}
+\usepackage{atbegshi}
+\usepackage{microtype}
+\usepackage[adjust]{cite}
+\usepackage{fancyheadings}
+%\usepackage[utf8]{inputenc}
+%\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{subfig}
+
+\usepackage[framemethod=TikZ]{mdframed}
+%\usepackage{lipsum}
+\mdfdefinestyle{MyFrame}{%
+    linecolor=blue,
+    outerlinewidth=1pt,
+    roundcorner=20pt,
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt,
+    backgroundcolor=white}
+    %backgroundcolor=gray!50!white}
+    
+
+
+\newcommand\myworries[1]{\textcolor{red}{#1}}
+
+
+\newtheorem{mydef}{Definition}
+
+\newtheorem{
+}{Notation}
+
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{appendix}
+
+
+
+\usepackage[pages=some]{background}
+\usetikzlibrary{calc}
+
+\usepackage{geometry}
+
+
+%formato A5
+%paperwidth=150mm, 
+%paperheight=230mm,
+
+ %formato stampa il mio libro
+\geometry{
+paperwidth=145mm,
+paperheight=225mm,
+left=18mm,
+right=12mm,
+top=8mm,
+bottom=12mm,
+includehead=true,
+includefoot=true,
+twoside=true}
+
+%
+%\usepackage[cam,a4,center,pdftex]{crop}
+
+
+
+\usepackage[pdftex, pdfborder= 0 0 0, citecolor=black, urlcolor=black, linkcolor=black, colorlinks=true, bookmarksopen=false]{hyperref}
+\usepackage{bookmark}
+
+
+    
+\newfloat{eqfloat}{h}{eqflts}
+\floatname{eqfloat}{Equation}
+\makeatletter
+\let\c@eqfloat\c@equation
+\makeatother
+
+%
+
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\begin{document}
+
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+
+%\crop[cam]
+%
+\author{Matteo Manca}
+\title{Neural Networks}
+
+
+
+
+%
+%\makeatletter
+%\hypersetup{
+%pdftitle=\@title, 
+%pdfauthor=\@author, 
+%pdfsubject={Human Computer Interaction},
+%pdfkeywords={Gesture} {Cooperation} {Natural} {Interaction} {Multitouch} {Tangible} {Embodied}}
+%
+%\makeatother
+%
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\lfoot
+[\hrule \vspace{4pt} \footnotesize{Matteo Manca\hfill \textit{Neural Netorks}}]
+{\hrule \vspace{4pt} \footnotesize{Matteo Manca\hfill \textit{Neural Netorks}}}
+\cfoot{}       
+\rfoot[]{}
+%
+\lhead[\footnotesize{\thepage}]{\footnotesize{\leftmark}}
+\chead[]{}          
+\rhead[\footnotesize{\leftmark}]{\footnotesize{\thepage}}
+
+
+
+
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\st}[0]{\superscript{st}}
+\newcommand{\halfcol}{width=.45\textwidth}
+\newcommand{\fullcol}{width=.90\textwidth}
+\newcommand{\smallcol}{width=.65\textwidth}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% create a shortcut to typeset table headings
+\newcommand\tabhead[1]{\small\textbf{#1}}
+%
+\frontmatter
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{1.2ex plus 0.5ex minus 0.2ex}
+
+\SetBgOpacity{1}
+\SetBgScale{1}
+\SetBgAngle{0}
+\SetBgColor{white}
+
+\newcommand{\BgFingerprint}[2]{
+\SetBgContents{
+\begin{tikzpicture}[remember picture,overlay]
+% draw image
+
+%finger in titles
+\node[inner sep=0,opacity=0.12] at  ($ (current page.center) + (0cm,0cm) $)
+{\includegraphics[width=20cm]{figures/cover/fingerprint_high}};
+
+%finger in page number
+%\node[inner sep=0,opacity=0.12] at  ($ (current page.north east) + (1.65cm,2.3cm) $)
+%{\includegraphics[width=1cm]{figures/cover/fingerprint}};
+
+%\node (rect) at  ($ (current page.center) + (3.3cm,6.5cm) $)
+ %[draw,opacity=0.9,color=black,fill=white,minimum width=9cm,minimum height=3cm,rounded corners=1cm] {\large #1};
+
+%\node (rect) at  ($ (current page.center) + (3.3cm,4.5cm) $)
+ %[draw,opacity=0.9,color=white,fill=white,minimum width=9cm,minimum height=3cm,rounded corners=1cm] {\large  #2};
+
+\end{tikzpicture}
+}
+}
+
+
+\begin{center}
+{\large \textbf{ Neural Networks\\ 
+\vspace{0.2in}Matteo Manca\\ }}
+{\small \tt matteomanca@gmail.com}
+\end{center}
+\vspace{0.2in}
+
+\newsavebox\IBoxA \newsavebox\IBoxB \newlength\IHeight
+\newcommand\TwoFig[5]{% Image1 Caption1 Label1 Image2 ...
+  \sbox\IBoxA{\includegraphics[width=0.5\textwidth]{#1}}
+  \sbox\IBoxB{\includegraphics[width=0.5\textwidth]{#3}}%
+  \ifdim\ht\IBoxA>\ht\IBoxB
+    \setlength\IHeight{\ht\IBoxB}\else\setlength\IHeight{\ht\IBoxA}\fi%
+  \begin{figure}[htb]
+\centering
+\subfigure[]{%
+\includegraphics[height=\IHeight]{#1}
+\label{#2}}
+\subfigure[]{%
+\includegraphics[height=\IHeight]{#3}
+\label{#4}}
+\caption{#5}
+\end{figure}
+}
+
+
+%\input{0.0.notes}
+%\input{0.0.titlepage-ita}
+%\input{0.0.titlepage-eng}
+%\input{Chapters/0_Acknowledgements}
+%\input{Chapters/0_abstract}
+\cleardoublepage
+%
+\pagestyle{empty}
+\setcounter{tocdepth}{2} %%to decide the deep of the table of content
+\setlength{\parskip}{2pt}
+\tableofcontents
+%\section{section}
+%\subsection{subsection}
+%\listoffigures
+\setlength{\parskip}{1.2ex plus 0.5ex minus 0.2ex}
+%
+\mainmatter 
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\lfoot
+[\hrule \vspace{4pt} \footnotesize{Matteo Manca\hfill \textit{Neural Netorks}}]
+{\hrule \vspace{4pt} \footnotesize{Matteo Manca\hfill \textit{Neural Netorks}}}
+\cfoot{}       
+\rfoot[]{}
+%
+\lhead[\footnotesize{\thepage}]{\footnotesize{\leftmark}}
+\chead[]{}          
+\rhead[\footnotesize{\leftmark}]{\footnotesize{\thepage}}
+
+% paragraph spacing and indentation rules for mainmatter
+%
+\cleardoublepage
+\input{Chapters/1_Introduction}
+%\input{Chapters/2_RelatedWork}
+%\input{Chapters/4_FriendRecommendation.tex}
+%\input{Chapters/3_TagRecommendation}
+%\input{Chapters/5_SocialMotivation}
+%\input{Chapters/6_Conclusions}
+%\input{Chapters/8_Appendix_A}
+
+
+%
+% Appentix
+%\input{appendices}
+%\input{appendicesA.music}
+%\input{appendicesB.hci}
+%
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{part}{References}
+
+%\bibliographystyle{plain}
+%\renewcommand{\bibname}{References}
+%\bibliography{biblio}
+
+
+
+\backmatter
+%\input{acknowledgements}
+
+\end{document}
